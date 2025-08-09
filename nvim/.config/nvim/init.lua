@@ -702,7 +702,6 @@ require('lazy').setup({
         'clang-format', -- C/C++ formatter
         'black', -- Python formatter
         'isort', -- Python import sorter
-        'flake8', -- Python linter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

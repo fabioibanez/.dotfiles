@@ -7,7 +7,6 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        python = { 'flake8' },
         -- Note: C/C++ linting is handled by clangd LSP with clang-tidy
       }
 
