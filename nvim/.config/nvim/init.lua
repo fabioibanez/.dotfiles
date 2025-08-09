@@ -756,8 +756,8 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- C/C++ formatting
-        c = { 'clang-format' },
-        cpp = { 'clang-format' },
+        --c = { 'clang-format' },
+        --cpp = { 'clang-format' },
         -- Python formatting - run isort first, then black
         python = { 'isort', 'black' },
         --
