@@ -171,6 +171,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
+vim.cmd.colorscheme 'desert'
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
@@ -928,13 +930,6 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  },
-  {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
