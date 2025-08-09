@@ -706,7 +706,12 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('mason-lspconfig').setup {
+      local mason_lsp_ok, mason_lspconfig = pcall(require, 'mason_lspconfig')
+      if not mason_lsp_ok then
+        vim.notify('mason-lspconfig failed to load, skipping LSP setup', vim.log.levels.WARN)
+        return
+      end
+      mason_lspconfig.setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
