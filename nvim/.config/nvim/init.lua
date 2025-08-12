@@ -171,7 +171,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
-vim.cmd.colorscheme 'desert'
+vim.cmd.colorscheme 'industry'
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -758,7 +758,7 @@ require('lazy').setup({
         --c = { 'clang-format' },
         --cpp = { 'clang-format' },
         -- Python formatting - run isort first, then black
-        python = { 'isort', 'black' },
+        -- python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
