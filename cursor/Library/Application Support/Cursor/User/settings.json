@@ -205,13 +205,13 @@
 	"editor.copyWithSyntaxHighlighting": true,
 
 	// Control the cursor animation style.
-	"editor.cursorBlinking": "blink",
+	"editor.cursorBlinking": "expand",
 
 	// Controls whether the smooth caret animation should be enabled.
 	//  - off: Smooth caret animation is disabled.
 	//  - explicit: Smooth caret animation is enabled only when the user moves the cursor with an explicit gesture.
 	//  - on: Smooth caret animation is always enabled.
-	"editor.cursorSmoothCaretAnimation": "off",
+	"editor.cursorSmoothCaretAnimation": "on",
 
 	// Controls the cursor style in insert input mode.
 	"editor.cursorStyle": "line",
@@ -457,7 +457,7 @@
 	"editor.fontLigatures": false,
 
 	// Controls the font size in pixels.
-	"editor.fontSize": 12,
+	"editor.fontSize": 14,
 
 	// Configures font variations. Can be either a boolean to enable/disable the translation from font-weight to font-variation-settings or a string for the value of the CSS 'font-variation-settings' property.
 	"editor.fontVariations": false,
@@ -1152,7 +1152,7 @@
 	//  - on: Lines will wrap at the viewport width.
 	//  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
 	//  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
-	"editor.wordWrap": "off",
+	"editor.wordWrap": "on",
 
 	// Controls the wrapping column of the editor when `editor.wordWrap` is `wordWrapColumn` or `bounded`.
 	"editor.wordWrapColumn": 80,
@@ -1375,7 +1375,7 @@
 	"workbench.colorCustomizations": {},
 
 	// Specifies the color theme used in the workbench when `window.autoDetectColorScheme` is not enabled.
-	"workbench.colorTheme": "Cursor Dark",
+	"workbench.colorTheme": "Catppuccin Mocha",
 
 	// Controls where the command palette should ask chat questions.
 	//  - chatView: Ask chat questions in the Chat view.
@@ -1868,7 +1868,7 @@
 	"window.closeWhenEmpty": false,
 
 	// Show command launcher together with the window title. This setting only has an effect when `window.customTitleBarVisibility` is not set to `never`.
-	"window.commandCenter": true,
+	"window.commandCenter": false,
 
 	// Controls whether to show a confirmation dialog before closing a window or quitting the application.
 	//  - always: Always ask for confirmation.
@@ -2173,7 +2173,7 @@
 	"screencastMode.verticalOffset": 20,
 
 	// Controls whether turning on Zen Mode also centers the layout.
-	"zenMode.centerLayout": true,
+	"zenMode.centerLayout": false,
 
 	// Controls whether turning on Zen Mode also puts the workbench into full screen mode.
 	"zenMode.fullScreen": true,
@@ -6319,10 +6319,10 @@
 		"diffEditor.ignoreTrimWhitespace": false,
 		"editor.defaultColorDecorators": "never",
 		"editor.formatOnType": true,
-		"editor.wordBasedSuggestions": "off",
 		"editor.quickSuggestions": {
 				"strings": true
-		}
+		},
+		"editor.wordBasedSuggestions": "off"
 	},
 
 	// Configure settings to be overridden for the ruby language.
@@ -7428,6 +7428,115 @@
 	// Enable/disable the floating indicator that shows when focused in the simple browser.
 	"simpleBrowser.focusLockIndicator.enabled": true,
 
+	// Whether to automatically insert an `f` in front of a string when typing a `{` inside it.
+	"cursorpyright.analysis.autoFormatStrings": true,
+
+	// Offer auto-import completions.
+	"cursorpyright.analysis.autoImportCompletions": true,
+
+	// Automatically add common search paths like 'src'?
+	"cursorpyright.analysis.autoSearchPaths": true,
+
+	// Path to the baseline file. Defaults to `./.basedpyright/baseline.json`
+	"cursorpyright.analysis.baselineFile": "",
+
+	// 
+	//  - openFilesOnly: Analyzes and reports errors on only open files.
+	//  - workspace: Analyzes and reports errors on all files in the workspace.
+	"cursorpyright.analysis.diagnosticMode": "openFilesOnly",
+
+	// **This setting has no effect if a `pyrightconfig.json` or `pyproject.toml` file (with a `[tool.pyright]` or `[tool.basedpyright]` section) is found in the workspace. Please see [this discussion](https://github.com/DetachHead/basedpyright/issues/513#issuecomment-2364928299) for more information.**
+	// 
+	// Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "cursorpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://docs.basedpyright.com/latest/configuration/config-files/#diagnostic-settings-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
+	"cursorpyright.analysis.diagnosticSeverityOverrides": {},
+
+	// Disable workspace symbol provider to improve performance.
+	"cursorpyright.analysis.disableWorkspaceSymbol": false,
+
+	// Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.
+	"cursorpyright.analysis.exclude": [],
+
+	// Additional import search resolution paths
+	"cursorpyright.analysis.extraPaths": [],
+
+	// Timeout (in seconds) for file enumeration operations. Default is 10 seconds.
+	"cursorpyright.analysis.fileEnumerationTimeout": 10,
+
+	// Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.
+	"cursorpyright.analysis.ignore": [],
+
+	// Paths of directories or files that should be included. If no paths are specified, pyright defaults to the workspace root directory. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character).
+	"cursorpyright.analysis.include": [],
+
+	// Whether to show inlay hints on function arguments.
+	"cursorpyright.analysis.inlayHints.callArgumentNames": false,
+
+	// Whether to show inlay hints on function arguments when the input expression is a variable with the same name as the parameter.
+	"cursorpyright.analysis.inlayHints.callArgumentNamesMatching": false,
+
+	// Whether to show inlay hints on function return types.
+	"cursorpyright.analysis.inlayHints.functionReturnTypes": false,
+
+	// Whether to show inlay hints on inferred generic types.
+	"cursorpyright.analysis.inlayHints.genericTypes": false,
+
+	// Whether to show inlay hints on assignments to variables.
+	"cursorpyright.analysis.inlayHints.variableTypes": false,
+
+	// Specifies the level of logging for the Output panel
+	"cursorpyright.analysis.logLevel": "Information",
+
+	// Path to directory containing custom type stub files.
+	"cursorpyright.analysis.stubPath": "typings",
+
+	// Defines the default rule set for type checking.
+	"cursorpyright.analysis.typeCheckingMode": "off",
+
+	// Paths to look for typeshed modules.
+	"cursorpyright.analysis.typeshedPaths": [],
+
+	// Use library implementations to extract type information when type stub is not present.
+	"cursorpyright.analysis.useLibraryCodeForTypes": true,
+
+	// Whether to rely on imports from the `typing_extensions` module when targeting older versions of python that do not include certain typing features such as the `@override` decorator.
+	"cursorpyright.analysis.useTypingExtensions": false,
+
+	// Disables type completion, definitions, and references.
+	"cursorpyright.disableLanguageServices": false,
+
+	// Disables the "Organize Imports" command.
+	"cursorpyright.disableOrganizeImports": false,
+
+	// Disables the use of pull diagnostics from VS Code.
+	"cursorpyright.disablePullDiagnostics": false,
+
+	// Disable hint diagnostics with special hints for grayed-out or strike-through text.
+	"cursorpyright.disableTaggedHints": false,
+
+	// Whether to use the version of pyright installed in the project (recommended) or the one bundled with the extension (not recommended).
+	"cursorpyright.importStrategy": "fromEnvironment",
+
+	// Additional arguments to pass to the node process
+	"cursorpyright.nodeArguments": [],
+
+	// Additional environment variables to pass to the node process
+	"cursorpyright.nodeEnvVars": {},
+
+	// Path to the node executable. If not set, the default node executable will be used.
+	"cursorpyright.nodeExecutable": "",
+
+	// Controls the `--max-old-space-size` (in MB) passed to the Node.js process running the Pyright language server. A value > 0 sets the heap explicitly. `0` disables automatic insertion of the flag. `-1` (default) lets the extension pick a value based on your total system RAM (≈ ½ of physical RAM, capped at 16 GB). If you already supply `--max-old-space-size` in `cursorpyright.nodeArguments`, that value takes precedence.
+	"cursorpyright.nodeMaxOldSpaceSize": -1,
+
+	// Whether to import Pylance settings to Cursor Pyright
+	"cursorpyright.shouldImportPylanceSettings": "ask",
+
+	// Path to Python, you can use a custom version of Python.
+	"python.pythonPath": "python",
+
+	// Path to folder with a list of Virtual Environments.
+	"python.venvPath": "",
+
 	// When debugging only step through user-written code. Disable this to allow stepping into library code.
 	"debugpy.debugJustMyCode": true,
 
@@ -7564,9 +7673,6 @@
 
 	// Folders in your home directory to look into for virtual environments (supports pyenv, direnv and virtualenvwrapper by default).
 	"python.venvFolders": [],
-
-	// Path to folder with a list of Virtual Environments (e.g. ~/.pyenv, ~/Envs, ~/.virtualenvs).
-	"python.venvPath": "",
 
 	// When typing a '{' in a string, automatically prefix the string with an 'f'.
 	"python.analysis.autoFormatStrings": false,
@@ -9147,111 +9253,5 @@
 
 	// Searches wrap around the end of the file.
 	"vim.wrapscan": true,
-
-	// Whether to automatically insert an `f` in front of a string when typing a `{` inside it.
-	"cursorpyright.analysis.autoFormatStrings": true,
-
-	// Offer auto-import completions.
-	"cursorpyright.analysis.autoImportCompletions": true,
-
-	// Automatically add common search paths like 'src'?
-	"cursorpyright.analysis.autoSearchPaths": true,
-
-	// Path to the baseline file. Defaults to `./.basedpyright/baseline.json`
-	"cursorpyright.analysis.baselineFile": "",
-
-	// 
-	//  - openFilesOnly: Analyzes and reports errors on only open files.
-	//  - workspace: Analyzes and reports errors on all files in the workspace.
-	"cursorpyright.analysis.diagnosticMode": "openFilesOnly",
-
-	// **This setting has no effect if a `pyrightconfig.json` or `pyproject.toml` file (with a `[tool.pyright]` or `[tool.basedpyright]` section) is found in the workspace. Please see [this discussion](https://github.com/DetachHead/basedpyright/issues/513#issuecomment-2364928299) for more information.**
-	// 
-	// Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "cursorpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://docs.basedpyright.com/latest/configuration/config-files/#diagnostic-settings-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
-	"cursorpyright.analysis.diagnosticSeverityOverrides": {},
-
-	// Disable workspace symbol provider to improve performance.
-	"cursorpyright.analysis.disableWorkspaceSymbol": false,
-
-	// Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.
-	"cursorpyright.analysis.exclude": [],
-
-	// Additional import search resolution paths
-	"cursorpyright.analysis.extraPaths": [],
-
-	// Timeout (in seconds) for file enumeration operations. Default is 10 seconds.
-	"cursorpyright.analysis.fileEnumerationTimeout": 10,
-
-	// Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.
-	"cursorpyright.analysis.ignore": [],
-
-	// Paths of directories or files that should be included. If no paths are specified, pyright defaults to the workspace root directory. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character).
-	"cursorpyright.analysis.include": [],
-
-	// Whether to show inlay hints on function arguments.
-	"cursorpyright.analysis.inlayHints.callArgumentNames": false,
-
-	// Whether to show inlay hints on function arguments when the input expression is a variable with the same name as the parameter.
-	"cursorpyright.analysis.inlayHints.callArgumentNamesMatching": false,
-
-	// Whether to show inlay hints on function return types.
-	"cursorpyright.analysis.inlayHints.functionReturnTypes": false,
-
-	// Whether to show inlay hints on inferred generic types.
-	"cursorpyright.analysis.inlayHints.genericTypes": false,
-
-	// Whether to show inlay hints on assignments to variables.
-	"cursorpyright.analysis.inlayHints.variableTypes": false,
-
-	// Specifies the level of logging for the Output panel
-	"cursorpyright.analysis.logLevel": "Information",
-
-	// Path to directory containing custom type stub files.
-	"cursorpyright.analysis.stubPath": "typings",
-
-	// Defines the default rule set for type checking.
-	"cursorpyright.analysis.typeCheckingMode": "off",
-
-	// Paths to look for typeshed modules.
-	"cursorpyright.analysis.typeshedPaths": [],
-
-	// Use library implementations to extract type information when type stub is not present.
-	"cursorpyright.analysis.useLibraryCodeForTypes": true,
-
-	// Whether to rely on imports from the `typing_extensions` module when targeting older versions of python that do not include certain typing features such as the `@override` decorator.
-	"cursorpyright.analysis.useTypingExtensions": false,
-
-	// Disables type completion, definitions, and references.
-	"cursorpyright.disableLanguageServices": false,
-
-	// Disables the "Organize Imports" command.
-	"cursorpyright.disableOrganizeImports": false,
-
-	// Disables the use of pull diagnostics from VS Code.
-	"cursorpyright.disablePullDiagnostics": false,
-
-	// Disable hint diagnostics with special hints for grayed-out or strike-through text.
-	"cursorpyright.disableTaggedHints": false,
-
-	// Whether to use the version of pyright installed in the project (recommended) or the one bundled with the extension (not recommended).
-	"cursorpyright.importStrategy": "fromEnvironment",
-
-	// Additional arguments to pass to the node process
-	"cursorpyright.nodeArguments": [],
-
-	// Additional environment variables to pass to the node process
-	"cursorpyright.nodeEnvVars": {},
-
-	// Path to the node executable. If not set, the default node executable will be used.
-	"cursorpyright.nodeExecutable": "",
-
-	// Controls the `--max-old-space-size` (in MB) passed to the Node.js process running the Pyright language server. A value > 0 sets the heap explicitly. `0` disables automatic insertion of the flag. `-1` (default) lets the extension pick a value based on your total system RAM (≈ ½ of physical RAM, capped at 16 GB). If you already supply `--max-old-space-size` in `cursorpyright.nodeArguments`, that value takes precedence.
-	"cursorpyright.nodeMaxOldSpaceSize": -1,
-
-	// Whether to import Pylance settings to Cursor Pyright
-	"cursorpyright.shouldImportPylanceSettings": "ask",
-
-	// Path to Python, you can use a custom version of Python.
-	"python.pythonPath": "python",
 
 }
